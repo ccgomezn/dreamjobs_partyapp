@@ -7,6 +7,7 @@ class AddUsers < ActiveRecord::Migration[5.2]
       t.string :phone_number, null: false
       t.string :national_id, unique: true, null: false
       t.string :email, unique: true, null: false
+      t.string :password_digest, null: false
     end
   end
 end
