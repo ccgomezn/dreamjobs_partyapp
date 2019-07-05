@@ -39,7 +39,9 @@ ActiveRecord::Schema.define(version: 2019_07_03_122104) do
     t.string "national_id", null: false
     t.string "email", null: false
     t.string "password_digest", null: false
+    t.boolean "state", default: false, null: false
     t.integer "user_type", default: 0, null: false
+    t.string "user_token", null: false
   end
 
 end
