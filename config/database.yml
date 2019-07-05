@@ -10,7 +10,7 @@ default: &default
 
 development:
   <<: *default
-  host: 127.0.0.1
+  url: <%= ENV['DATABASE_URL'] %>
 
   database: dream_jobs_dev
 
@@ -23,5 +23,4 @@ test:
 
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
   database: dream_jobs_prod
