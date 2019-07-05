@@ -33,7 +33,6 @@ class ServiceController < ApplicationController
     service = Service.find(params[:id])
 
     render json: service.as_json, status: :ok
-
   end
 
   private
