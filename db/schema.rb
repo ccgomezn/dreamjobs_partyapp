@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2019_07_03_122104) do
     t.string "phone_number", null: false
     t.string "national_id", null: false
     t.string "email", null: false
+    t.string "password_digest", null: false
   end
 
 end
