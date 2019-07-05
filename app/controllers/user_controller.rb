@@ -56,9 +56,9 @@ class UserController < ApplicationController
     user = User.find_by(user_token: params[:id])
     if user
       user.user_desactivate
-      render json: {message: 'User activated'}, status: :ok
+      render json: {message: 'User desactivaded'}, status: :ok
     else
-      render json: {message: 'User not activated'}, status: 403
+      render json: {message: 'User not desactivaded'}, status: 403
     end
   end
   private
