@@ -1,8 +1,12 @@
 class EmployeeController < ApplicationController
+
+  before_action :authenticate_user
+  before_action :check_admin
+
   def create
     employee = Employee.new(employee_params)
     if employee.save
-      render json: {message: 'Employee created'}, status: :created
+      render json: {message: 'Employee created', data: employee.as_json}, status: :created
     else
       render json: { error: employee.errors.full_messages },
              status: :unprocessable_entity
@@ -20,7 +24,7 @@ class EmployeeController < ApplicationController
 
     employee.update(employee_params)
 
-    render json: {message: 'Employee edited'}, status: :ok
+    render json: {message: 'Employee edited', data: employee.as_json}, status: :ok
   end
 
   def index

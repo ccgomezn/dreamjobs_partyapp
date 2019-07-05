@@ -1,8 +1,11 @@
 class ServiceController < ApplicationController
+  before_action :authenticate_user
+  before_action :check_admin, only: [:create, :destroy, :update]
+
   def create
     service = Service.new(service_params)
     if service.save
-      render json: {message: 'Service created'}, status: :created
+      render json: {message: 'Service created', data: service.as_json}, status: :created
     else
       render json: { error: user.errors.full_messages },
              status: :unprocessable_entity
@@ -20,7 +23,7 @@ class ServiceController < ApplicationController
 
     service.update(service_params)
 
-    render json: {message: 'Service edited'}, status: :ok
+    render json: {message: 'Service edited', data: service.as_json}, status: :ok
   end
 
   def index

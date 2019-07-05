@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2019_07_03_122104) do
     t.string "price", null: false
   end
 
-  create_table "services_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+  create_table "services_users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "service_id", null: false
     t.string "address", null: false

@@ -5,13 +5,16 @@ class User < ApplicationRecord
   validates :email, :password, :phone_number, :name, :national_id, presence: true
   validates :email, uniqueness: true
   validates :password, length: { minimum: 8 }
-    has_many :services_user
+  has_many :services_user
 
   def user_activate
     self.state = true
     save!(validate: false)
   end
-
+  def user_desactivate
+    self.state = false
+    save!(validate: false)
+  end
   private
 
   def user_token_creation

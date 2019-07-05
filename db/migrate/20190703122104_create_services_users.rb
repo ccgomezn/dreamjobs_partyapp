@@ -6,6 +6,8 @@ class CreateServicesUsers < ActiveRecord::Migration[5.2]
       t.string :country, null: false
       t.integer :employee_id, references: [:employees, :id]
       t.integer :rating
+      t.integer  :id, primary_key: true, auto_increment: true
+
     end
   end
 end

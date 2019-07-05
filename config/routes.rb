@@ -3,10 +3,15 @@ Rails.application.routes.draw do
   resources :user do
     member do
       get :confirm_email
+      post :desactivate_user
     end
   end
   resources :service
   resources :employee
-  resources :services_user
+  resources :services_user do 
+    member do
+      put :rate
+    end
+  end
 
 end
