@@ -91,7 +91,7 @@ Rails.application.configure do
 
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
-  config.action_mailer.default_url_options = { :host => "partyappdreamjobs.com" }
+  config.action_mailer.default_url_options = { :host => "https://partyappdreamjobs.herokuapp.com/" }
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
