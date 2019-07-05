@@ -1,4 +1,4 @@
-class AddServicesUsers < ActiveRecord::Migration[5.2]
+class CreateServicesUsers < ActiveRecord::Migration[5.2]
   def change
     create_join_table :users, :services do |t|
       t.string :adress, null: false
