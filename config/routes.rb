@@ -6,5 +6,6 @@ Rails.application.routes.draw do
     end
   end
   resources :service
+  resources :services_user
 
 end

@@ -5,6 +5,7 @@ class User < ApplicationRecord
   validates :email, :password, :phone_number, :name, :national_id, presence: true
   validates :email, uniqueness: true
   validates :password, length: { minimum: 8 }
+    has_many :services_user
 
   def user_activate
     self.state = true

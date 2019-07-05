@@ -27,10 +27,11 @@ ActiveRecord::Schema.define(version: 2019_07_03_122104) do
   create_table "services_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "service_id", null: false
-    t.string "adress", null: false
+    t.string "address", null: false
     t.string "city", null: false
     t.string "country", null: false
-    t.integer "employee_id", null: false
+    t.integer "employee_id"
+    t.integer "rating"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|

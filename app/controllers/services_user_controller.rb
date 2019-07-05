@@ -6,7 +6,7 @@ class ServicesUserController < ApplicationController
     if services_user.save
       render json: {message: 'Service booked'}, status: :created
     else
-      render json: { error: user.errors.full_messages },
+      render json: { error: services_user.errors.full_messages },
              status: :unprocessable_entity
     end
   end
@@ -21,15 +21,21 @@ class ServicesUserController < ApplicationController
   end
 
   def update
-    service_user = ServicesUser.find(params[:id])
-    service_user.update(service_user_employee)
+    service_user = ServicesUser.where(service_user_rate_params_find)
+    service_user.update_all(employee_id: service_user_employee_params[:employee_id])
+    user = User.find(service_user.first.user_id)
+    service = Service.find(ServicesUser.first.service_id)
+    employee = Employee.find(service_user_employee_params[:employee_id])
+    ServicesUserMailer.service_association(user, service, employee).deliver
+    message = 'Your service has been associated to ' + employee.name
+    TwilioTextMessenger.new(message, user.phone_number).call
     render json: {message: 'Employee asociated'}, status: :ok
   end
 
   private
 
   def service_user_params
-    params.require(:user_service).permit(:user_id, :adress, :city, :country, :service_id)
+    params.require(:user_service).permit(:user_id, :address, :city, :country, :service_id)
   end
 
   def service_user_rate_params_find
@@ -40,7 +46,7 @@ class ServicesUserController < ApplicationController
     params.require(:rate).permit(:rate)
   end
 
-  def service_user_employee
+  def service_user_employee_params
     params.require(:employee).permit(:employee_id)
   end
 end
