@@ -40,7 +40,7 @@ Rails.application.configure do
     address:              'smtp.gmail.com',
     port:                 587,
     protocol:             'tls',
-    domain:               'https://partyappdreamjobs.herokuapp.com/',
+    domain:               'heroku.com',
     user_name:            Rails.application.credentials.gmail_user,
     password:             Rails.application.credentials.gmail_password,
     authentication:       'plain',
